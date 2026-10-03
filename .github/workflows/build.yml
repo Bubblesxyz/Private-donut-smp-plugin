@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: unzip -q DrDonutMenu-source.zip
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 21
-      - run: mvn -B -f DrDonutMenu2/pom.xml package
+          cache: maven
+      - run: mvn -B package
       - uses: actions/upload-artifact@v4
         with:
-          name: DrDonutMenu
-          path: DrDonutMenu2/target/DrDonutMenu.jar
+          name: DonutRTP
+          path: target/DonutRTP.jar
